@@ -1,0 +1,66 @@
+
+
+class dietPlan: #Object oriented
+    
+    def __init__(self, age, weight, height, gender):
+        self.age = age
+        self.weight = weight
+        self.height = height
+        self.gender = gender
+        
+    def calculateBMR (self): #Basal Metabolic Rate
+        
+        if (self.gender == "male"):
+            BMR = (13.75 * self.weight) + (5 * self.height) - (6.76 * self.age) + 66
+            
+        else:
+            BMR = (9.56 * self.weight) + (1.85 * self.height) - (4.68 * self.age) + 655
+            
+        return BMR
+    
+
+while True:
+    gender = str(input("Enter \"male\" for male, \"female\" for female: "))
+    if (gender == "male") or (gender == "female"):
+        break;
+    else:
+        print ("input invalid, enter the correct letter")
+    
+print (gender)
+
+age = False
+weight = False
+height = False
+
+
+while (age == False):
+    ageNum = int(input("Please enter age: ")) #Input type handling 
+    if (ageNum < 75) and (ageNum > 12):   #Value boundary checking
+        age = True
+    else:
+        print ("Age number out of range")
+        
+
+while (weight == False):
+    weightNum = int(input("Please input weight in kg: "))
+    if (weightNum < 200) and (weightNum > 30):
+        weight = True
+    else:
+        print ("Weight number out of range")  
+        
+    
+while (height == False):
+    heightNum = int(input("Please input height in cm: "))
+    if (heightNum < 220) and (heightNum > 100):
+        height = True
+    else:
+        print ("Height number out of range")  
+
+
+
+diet = dietPlan (ageNum, weightNum, heightNum, gender)
+
+print ("Recommended Daily Calory intake: ", diet.calculateBMR(), " calories")
+
+
+
