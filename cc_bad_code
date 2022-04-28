@@ -1,0 +1,27 @@
+class dietPlan: #Object oriented
+    
+    def __init__(self, age, weight, height, gender):
+        self.age = age
+        self.weight = weight
+        self.height = height
+        self.gender = gender
+        
+    def calculateBMR (self): #Basal Metabolic Rate
+        
+        if (self.gender == "male"):
+            BMR = (13.75 * self.weight) + (5 * self.height) - (6.76 * self.age) + 66  # equation might not work with out of bound values 
+            
+        else:
+            BMR = (9.56 * self.weight) + (1.85 * self.height) - (4.68 * self.age) + 655
+            
+        return BMR
+    
+gender = input("input gender male/female: ") #bad code, no type checking
+ageNum = int (input("input age: ")) # no value boundaries
+weightNum = int(input ("input weight: "))
+heightNum = int (input ("input height: "))
+
+
+diet = dietPlan (ageNum, weightNum, heightNum, gender)
+
+print ("Recommended Daily Calory intake: ", diet.calculateBMR(), " calories")  # might return error depending on input values being out of bound/ no error handling
